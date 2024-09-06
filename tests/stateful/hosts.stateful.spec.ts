@@ -15,6 +15,9 @@ function writeFileReport(testStartTime, testInfo, asyncResults) {
     const resultsObj = asyncResults.reduce((acc, obj) => {
         return { ...acc, ...obj };
     }, {});
+    if (!fs.existsSync(outputDirectory)){
+        fs.mkdirSync(outputDirectory, { recursive: true });
+    }
     const fileName = `${new Date(testStartTime).toISOString().replace(/:/g, '_')}.json`;
     const outputPath = path.join(outputDirectory, fileName);
     const reportData = {
@@ -27,9 +30,9 @@ function writeFileReport(testStartTime, testInfo, asyncResults) {
         date: testStartTime,
         time_window: `Last ${process.env.TIME_VALUE} ${process.env.TIME_UNIT}`,
         measurements: resultsObj
-        };        
+    };        
     fs.writeFileSync(outputPath, JSON.stringify(reportData, null, 2));
-    };
+};
 
 test.beforeAll('Check data', async ({ request }) => {
     let a = await request.get(`${process.env.ELASTICSEARCH_HOST}`, {
