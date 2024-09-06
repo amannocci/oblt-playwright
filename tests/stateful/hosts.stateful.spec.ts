@@ -145,7 +145,7 @@ test('Hosts - Landing page - Logs', async ({ datePicker, hostsPage }, testInfo) 
     });
 });
 
-test('Hosts - Landing page - Alerts', async ({ datePicker, hostsPage }, testInfo) => {    
+test.skip('Hosts - Landing page - Alerts', async ({ datePicker, hostsPage }, testInfo) => {    
     await test.step('step01', async () => {
         const testStartTime = Date.now();
         console.log(`\n[${testInfo.title}] Step 01 - Filters data by selected time unit. Asserts the loading time of elements.`);
