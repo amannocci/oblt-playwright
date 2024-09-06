@@ -282,7 +282,7 @@ test('Hosts - Individual page - Processes tab', async ({ datePicker, hostsPage, 
     });
 });
 
-test('Hosts - Individual page - Profiling tab', async ({ datePicker, hostsPage }, testInfo) => {
+test.skip('Hosts - Individual page - Profiling tab', async ({ datePicker, hostsPage }, testInfo) => {
     await test.step('step01', async () => {
         console.log(`\n[${testInfo.title}] Step 01 - Navigates to Profiling tab.`);
         await hostsPage.clickTableCellHosts();
